@@ -27,8 +27,8 @@ export const handler = async (event: any): Promise<any> => {
      */
 
 
-    const prompt = `You are an expert Kubernetes cluster analyst.
-    Your task is to analyze and summarize the provided Kubernetes cluster metrics data.
+    const prompt = `You are an expert physician.
+    Your task is to analyze and summarize the provided symptoms from a collection of medical appointments.
 
     Here's the data:
     ${JSON.stringify(requestBody.inputData, null, 2)}
@@ -36,37 +36,26 @@ export const handler = async (event: any): Promise<any> => {
     Please provide a comprehensive summary of this data, including:
 
     1. Overview:
-      - Total number of clusters
-      - Total number of nodes across all clusters
-      - Total number of pods across all clusters
+      - Summary of the patient's medical history
+      - Overview of patient's current symptoms
 
-    2. Cluster Analysis:
-      - For each cluster, provide:
-        a) Cluster name
-        b) Number of nodes
-        c) Number of pods
-        d) CPU usage percentage
-        e) Memory usage percentage
+    2. Symptoms:
+      - Total number of symptoms
+      - Total number of appointments
+      - Any recurring symptoms
+      - Any patterns or trends in the symptoms
+      - Any symptoms that are severe or concerning
 
-    3. Resource Utilization:
-      - Identify the cluster with the highest CPU usage
-      - Identify the cluster with the highest memory usage
-      - Calculate and report the average CPU and memory usage across all clusters
+    3. Prescriptions or treatments:
+      - Prescriptions or treatments that were prescribed in the appointments
+      - Check prescriptions for drug interactions
 
-    4. Scale and Performance:
-      - Rank the clusters from largest to smallest based on node count
-      - Analyze the relationship between node count and pod count
-      - Identify any clusters that might be under or over-utilized based on their metrics
-
-    5. Recommendations:
-      - Suggest any potential optimizations or areas of concern based on the data
-      - Identify which clusters might need scaling up or down
-
-    6. Timestamp Analysis:
-      - Comment on the timestamp of the data and its relevance
+    4. Recommendations:
+      - Suggest any potential conditions or treatments based on the symptoms
+      - Provide a list of next steps for the patient to consider, such as seeing a specialist or scheduling a follow-up appointment
 
     Please provide your analysis in a clear, structured format using markdown for better readability.`;
-
+  
     /**
      * NOTE: Different models expect different parameteres for the InvokeModelCommand
      * https://docs.aws.amazon.com/bedrock/latest/userguide/bedrock-runtime_example_bedrock-runtime_InvokeModel_AnthropicClaude_section.html
